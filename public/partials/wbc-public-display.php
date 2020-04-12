@@ -11,7 +11,6 @@
  * @package    Wbc
  * @subpackage Wbc/public/partials
  */
-$order_id ?: '';
 
 $image = get_post_meta( $order_id, 'wbc_bank_confirmation', true );
 if ( $image ) {
