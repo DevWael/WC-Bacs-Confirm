@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Language: \n"
-"POT-Creation-Date: 2020-04-12 15:54+0000\n"
+"POT-Creation-Date: 2020-04-12 16:00+0000\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/"
@@ -43,15 +43,15 @@ msgstr ""
 msgid "Your request has been received"
 msgstr ""
 
-#: public/partials/wbc-public-display.php:49
+#: public/partials/wbc-public-display.php:48
 msgid "Upload payment confirmation image"
 msgstr ""
 
-#: public/partials/wbc-public-display.php:57
+#: public/partials/wbc-public-display.php:56
 msgid "Image Preview"
 msgstr ""
 
-#: public/partials/wbc-public-display.php:60
+#: public/partials/wbc-public-display.php:59
 msgid "Send"
 msgstr ""
 
@@ -61,8 +61,7 @@ msgstr ""
 
 #. Description of the plugin
 msgid ""
-"This is a short description of what the plugin does. It's displayed in the "
-"WordPress admin area."
+"add a form to help customers upload image for confirming their bank transfers"
 msgstr ""
 
 #. URI of the plugin

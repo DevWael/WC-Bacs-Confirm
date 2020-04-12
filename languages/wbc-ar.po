@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Language: ar\n"
-"POT-Creation-Date: 2020-04-12 15:54+0000\n"
+"POT-Creation-Date: 2020-04-12 16:00+0000\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
 "&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
-"PO-Revision-Date: 2020-04-12 15:57+0000\n"
+"PO-Revision-Date: 2020-04-12 16:01+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "Project-Id-Version: WC Bacs Confirm\n"
 "Report-Msgid-Bugs-To: \n"
@@ -51,15 +51,15 @@ msgstr "الحجم الأقصى للصورة ٢ ميجا"
 msgid "Your request has been received"
 msgstr "تم استلام طلبك,, شكرا لك."
 
-#: public/partials/wbc-public-display.php:49
+#: public/partials/wbc-public-display.php:48
 msgid "Upload payment confirmation image"
 msgstr "إرفاق صورة تأكيد التحويل البنكى"
 
-#: public/partials/wbc-public-display.php:57
+#: public/partials/wbc-public-display.php:56
 msgid "Image Preview"
 msgstr "عرض الصورة"
 
-#: public/partials/wbc-public-display.php:60
+#: public/partials/wbc-public-display.php:59
 msgid "Send"
 msgstr "إرسال"
 
@@ -69,9 +69,10 @@ msgstr "تأكيدات التحويلات البنكية"
 
 #. Description of the plugin
 msgid ""
-"This is a short description of what the plugin does. It's displayed in the "
-"WordPress admin area."
+"add a form to help customers upload image for confirming their bank transfers"
 msgstr ""
+"تستخدم لإضافة فورم لمساعدة المستخدمين على رفع صورة التحويل البنكى و ارفاقها "
+"مع الطلب"
 
 #. URI of the plugin
 msgid "https://innoshop.co/"
