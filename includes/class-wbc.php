@@ -35,7 +35,7 @@ class Wbc {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Wbc_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Wbc_Loader $loader Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -44,7 +44,7 @@ class Wbc {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
+	 * @var      string $plugin_name The string used to uniquely identify this plugin.
 	 */
 	protected $plugin_name;
 
@@ -53,7 +53,7 @@ class Wbc {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      string    $version    The current version of the plugin.
+	 * @var      string $version The current version of the plugin.
 	 */
 	protected $version;
 
@@ -78,6 +78,7 @@ class Wbc {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->handler_functions();
 
 	}
 
@@ -110,6 +111,7 @@ class Wbc {
 		 * of the plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wbc-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wbc-handler.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
@@ -172,7 +174,15 @@ class Wbc {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'woocommerce_thankyou_bacs', $plugin_public, 'display_form', 100, 1 );
 
+	}
+
+	private function handler_functions() {
+		$handler = new Wbc_Handler();
+		$this->loader->add_action( 'wp_ajax_wbc_bacs_confirm', $handler, 'service' );
+		$this->loader->add_action( 'add_meta_boxes', $handler, 'order_confirmation_meta_box' );
+		$this->loader->add_filter( 'pre_get_posts', $handler, 'hide_bank_confirmations', 100, 1 );
 	}
 
 	/**
@@ -188,8 +198,8 @@ class Wbc {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_plugin_name() {
 		return $this->plugin_name;
@@ -198,8 +208,8 @@ class Wbc {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    Wbc_Loader    Orchestrates the hooks of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_loader() {
 		return $this->loader;
@@ -208,8 +218,8 @@ class Wbc {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
+	 * @since     1.0.0
 	 */
 	public function get_version() {
 		return $this->version;

@@ -36,6 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'WBC_VERSION', '1.0.0' );
+define( 'WBC_DIR', plugin_dir_path( __FILE__ ) );
 
 /**
  * The code that runs during plugin activation.
@@ -79,4 +80,5 @@ function run_wbc() {
 	$plugin->run();
 
 }
+
 run_wbc();

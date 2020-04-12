@@ -2,3 +2,9 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+.wbc_confirm_image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}

@@ -27,7 +27,7 @@ class Wbc_Public {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @var      string $plugin_name The ID of this plugin.
 	 */
 	private $plugin_name;
 
@@ -36,21 +36,22 @@ class Wbc_Public {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @var      string $version The current version of this plugin.
 	 */
 	private $version;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
+	 * @param string $plugin_name The name of the plugin.
+	 * @param string $version The version of this plugin.
+	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
 	}
 
@@ -97,7 +98,15 @@ class Wbc_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wbc-public.js', array( 'jquery' ), $this->version, false );
+		wp_localize_script( $this->plugin_name, 'wbc_object', array(
+			'ajax_url'          => admin_url( 'admin-ajax.php' ),
+			'max_file_size_msg' => __( 'Allowed file size exceeded. (Max. 2 MB)', 'wbc' ),
+			'request_received_msg' => __( 'Your request has been received', 'wbc' ),
+		) );
+	}
 
+	public function display_form( $order_id ) {
+		include WBC_DIR . 'public/partials/wbc-public-display.php';
 	}
 
 }
