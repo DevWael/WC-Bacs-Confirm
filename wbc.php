@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       WC Bacs Confirm
  * Plugin URI:        https://innoshop.co/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       add a form to help customers upload image for confirming their bank transfers
  * Version:           1.0.0
  * Author:            AhmadWael
  * Author URI:        https://github.com/devwael
