@@ -17,6 +17,7 @@ if ( $image ) {
 	return null;
 }
 ?>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load8.css"/>
 <style>
     .wbc_form {
         width: 500px;
@@ -41,6 +42,22 @@ if ( $image ) {
         max-height: 100%;
         display: none;
     }
+
+    .wbc-progress {
+        background-color: #3281ba;
+        height: 15px;
+        border-radius: 3px;
+        overflow: hidden;
+        transition: 300ms;
+        margin-bottom: 30px;
+    }
+
+    .wbc-progress-bar {
+        height: 15px;
+        transition: 300ms;
+        /*border-radius: 3px;*/
+        background-color: #81D742;
+    }
 </style>
 <form class="wbc_form" action="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ) ?>" method="POST"
       enctype="multipart/form-data">
@@ -58,7 +75,7 @@ if ( $image ) {
     <br>
     <button class="go_now button alt" type="submit"><?php esc_html_e( 'Send', 'wbc' ); ?></button>
 </form>
-
+<br><br><br>
 <script>
     (function ($) {
         let input_file = $('.wbc_image'),
@@ -102,6 +119,29 @@ if ( $image ) {
                 data: formData,
                 contentType: false,
                 processData: false,
+                xhr: function () {
+                    var jqXHR = null;
+                    if (window.ActiveXObject) {
+                        jqXHR = new window.ActiveXObject("Microsoft.XMLHTTP");
+                    } else {
+                        jqXHR = new window.XMLHttpRequest();
+                    }
+
+                    //Upload progress
+                    jqXHR.upload.addEventListener("progress", function (evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = Math.round((evt.loaded * 100) / evt.total);
+                            //Do something with upload progress
+                            if (percentComplete < 100) {
+                                $('.wbc_form').html('<div class="wbc-progress"><div class="wbc-progress-bar" style="width: ' + percentComplete + '%;"></div></div>');
+                            } else {
+                                $('.wbc_form').html('<div class="loading"></div>');
+                            }
+                            //console.log('Uploaded percent', percentComplete);
+                        }
+                    }, false);
+                    return jqXHR;
+                },
                 success: function (response) {
                     // console.log(response);
                     if (response.success) {

@@ -65,12 +65,10 @@ class Wbc_Handler {
 				) );
 			}
 		} else {
-			if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'] ) ) {
-				wp_send_json_error( array(
-					'code' => 1,
-					'msg'  => esc_html__( 'Cheating!', 'wbc' )
-				) );
-			}
+			wp_send_json_error( array(
+				'code' => 1,
+				'msg'  => esc_html__( 'Cheating!', 'wbc' )
+			) );
 		}
 	}
 
