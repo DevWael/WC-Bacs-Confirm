@@ -16,7 +16,7 @@
  * Plugin Name:       WC Bacs Confirm
  * Plugin URI:        https://innoshop.co/
  * Description:       add a form to help customers upload image for confirming their bank transfers
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            AhmadWael
  * Author URI:        https://github.com/devwael
  * License:           GPL-2.0+
